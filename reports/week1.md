@@ -1,8 +1,12 @@
 #### Week 1 Progress [August 1st - August 8th]
 ### TODO's:
 ## Augusta:
-- [ ] Get repository up and running.
+- [x] Get repository up and running.
 - [ ] Sketch architecture and design for AugustaBot.
+    - [ ] Make VirtualEnv.
+    - [ ] Read documentations and tutorials. 
+    - [ ] Specify functionality. 
+    - [ ] Architecture.
 
 ## Teaching Assistance:
 - [ ] Read 3 sections of the TA manual:
