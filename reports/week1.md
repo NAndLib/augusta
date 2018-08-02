@@ -15,3 +15,6 @@
 - [ ] Rewrite "Experience" section for Resume.
 - [ ] Finish "Contacts" section for webpage.
 - [ ] Finish at least 4 `medium` coding problems.
+
+## Cozy:
+- [ ] Read: "[Dimensions in Program Synthesis](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/12/ppdp10-synthesis.pdf)".
