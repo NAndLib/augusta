@@ -7,8 +7,9 @@ helpful information.
 
 ## Instructions
 ### Installation:
-To install Augusta, follow this [link](https://www.google.com/blank.html) and
-click the "Add to Slack" button and authorize the bot. 
+To install Augusta, click the button below and select which channel to let Augusta talk on.
+
+<a href="https://slack.com/oauth/authorize?scope=incoming-webhook,commands,bot&client_id=373725849472.409848327092"><img alt="Add to Slack" height="40" width="139" src="https://platform.slack-edge.com/img/add_to_slack.png" srcset="https://platform.slack-edge.com/img/add_to_slack.png 1x, https://platform.slack-edge.com/img/add_to_slack@2x.png 2x" /></a>
 
 ### Usage: 
 Commands can be issued to AugustaBot by doing `@AugustaBot <command>`. 
