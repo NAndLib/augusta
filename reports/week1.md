@@ -3,8 +3,8 @@
 ## Augusta:
 - [x] Get repository up and running.
 - [ ] Sketch architecture and design for AugustaBot.
-    - [ ] Make VirtualEnv.
-    - [ ] Read documentations and tutorials. 
+    - [x] Make VirtualEnv.
+    - [x] Read documentations and tutorials. 
     - [ ] Specify functionality. 
     - [ ] Architecture.
 
