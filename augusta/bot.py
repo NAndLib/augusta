@@ -57,9 +57,39 @@ class Bot(object):
         print("Restarting Client")
         self.client = SlackClient(authed_teams[team_id]["bot_token"])
 
+    def send_message(self, team_id, user_id, text ="", is_dm = False):
+        """
+        Creates a new message from whatever the text is and send it to the correct channel
+
+        :param team_id: the channel for the message
+        :param user_id: the user that invoked Augusta
+        :param text:    the text to be parsed
+        :param is_dm:   whether it is a direct message
+        """
+        team_id = self.slide_into_dm(user_id) if is_dm else team_id
+
+        if self.messages.get(team_id):
+            self.messages[team_id].update({user_id : message.Message(channel=team_id)})
+        else:
+            self.messages[team_id] = {user_id : message.Message(channel=team_id)}
+
+        msg = self.messages[team_id][user_id]
+
+        msg.text = msg.parse_command(text)
+        posted_message = self.client.api_call("chat.postMessage",
+                                              channel=msg.channel,
+                                              username=self.name,
+                                              text=msg.text)
+        if posted_message["ok"]:
+            time_stamp = posted_message["ts"]
+            msg.ts = time_stamp
+        else:
+            print("Message Sending Unsuccessful")
+            print("Error: {error}".format(error=posted_message["error"]))
+
     def slide_into_dm(self, user_id):
         """
-        Opens the direct message to the user
+        Opens a direct message channel to a user
         :param user_id: the user that we want to slide into the DM's of
         :return: the channel ID of the user's DM
         """
