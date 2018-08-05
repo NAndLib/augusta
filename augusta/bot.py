@@ -57,7 +57,22 @@ class Bot(object):
         print("Restarting Client")
         self.client = SlackClient(authed_teams[team_id]["bot_token"])
 
-    def send_message(self, team_id, user_id, text = ""):
+    def slide_into_dm(self, user_id):
+        """
+        Opens the direct message to the user
+        :param user_id: the user that we want to slide into the DM's of
+        :return: the channel ID of the user's DM
+        """
+        user_dm = self.client.api_call("im.open", user=user_id)
+
+        return user_dm["channel"]["id"]
+
+    def echo_dm(self, user_id, text=""):
+        team_id = self.slide_into_dm(user_id)
+
+        self.echo_message(team_id, user_id, text)
+
+    def echo_message(self, team_id, user_id, text =""):
         if self.messages.get(team_id):
             self.messages[team_id].update({user_id : message.Message(channel=team_id, text=text)})
         else:
