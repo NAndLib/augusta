@@ -34,7 +34,7 @@ def _event_handler(event_type : str, slack_event : dict):
     :param slack_event: the slack event object that we will use to gather the necessary information
     :return: Response object with 200 - OK or 500 - No Event Handler Error
     """
-    print(event_type)
+    print('Event Type: {}'.format(event_type))
     if event_type == "app_mention":
         user_id = slack_event["event"].get("user")
         team_id = slack_event["event"]["channel"]
@@ -43,6 +43,15 @@ def _event_handler(event_type : str, slack_event : dict):
         if user_id:
             augusta.send_message(team_id, user_id, "<@{}> said: \"{}\"".format(user_id, event_text))
         return make_response("Message Sent", 200,)
+    if event_type == "pin_added":
+        return make_response("Pin Updated", 200,)
+    if event_type == "star_added":
+        return make_response("Star Updated", 200,)
+    if event_type == "message":
+        if slack_event["event"]["channel_type"] == "im":
+            return make_response("IM Message Sent", 200,)
+
+    return make_response("No Event Handler For {}".format(event_type), 404,)
 
 @app.route("/install", methods=["GET"])
 def install():

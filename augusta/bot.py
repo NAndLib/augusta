@@ -45,8 +45,7 @@ class Bot(object):
                                 "oauth.access",
                                 client_id=self.oauth["client_id"],
                                 client_secret=self.oauth["client_secret"],
-                                code=code
-                                )
+                                code=code)
         # To keep track of authorized teams and their associated OAuth tokens,
         # we will save the team ID and bot tokens to the global
         # authed_teams object
