@@ -5,6 +5,9 @@ Primary file that handles message creation and information
 """
 
 import yaml
+from manager import Manager
+
+manager = Manager()
 
 class Message(object):
     """
@@ -30,3 +33,44 @@ class Message(object):
             attachment = kwargs.get(var)
             if attachment:
                 self.attachments.append(attachment)
+
+    def parse_command(self, text):
+        """
+        Parses the message to find the correct command to pass to the manager
+
+        :param text: the text to be parsed
+        :return: the result of the command that was parsed
+        """
+        command = [cmd for cmd in manager.keywords if cmd in text]
+        if len(command) > 1 and "help" not in command:
+            return "Too many commands pls no :cry:"
+        elif len(command) > 1 and "help" in command:
+            help_with = command.remove("help")
+            s = "Here's some help:\n"
+            for thing in help_with:
+                s += manager.help(thing)
+            return self.code_block(s)
+
+        print("Command: {}".format(command))
+        if command:
+            function = getattr(manager, command.pop(), None)
+            args = text[text.index("[") + 1:text.index("]")] if "[" in text and "]" in text else ""
+
+            if function:
+                return self.code_block(function(args) if args else function())
+
+        return "I don't understand \"{}\"... Type `help` for a list of commands.".format(text)
+
+
+    def code_block(self, message):
+        """
+        Wraps a message in a code block
+
+        :param message: the message to wrap
+        :return: a message wrapped in the form
+            ```
+            message
+            ```
+        """
+
+        return "```\n{}\n```".format(message)
