@@ -16,11 +16,15 @@ import bot
 augusta = bot.Bot()
 app = Flask(__name__)
 
-def checkBot():
+def check_bot():
+    no = []
     for thing in augusta.oauth:
-        if not thing:
-            print("No {} found... Exiting program.".format(thing))
-            os.sys.exit(1)
+        if not augusta.oauth[thing]:
+            no.append(thing)
+    if no:
+        for thing in no:
+            print("No \'{}\' found... Exiting program.".format(thing))
+        os.sys.exit(1)
 
 def _event_handler(event_type : str, slack_event : dict):
     """
@@ -109,5 +113,5 @@ def listening():
                          you're looking for.", 404, {"X-Slack-No-Retry": 1})
 
 if __name__ == '__main__':
-    checkBot()
+    check_bot()
     app.run(debug=True, port=2848)
