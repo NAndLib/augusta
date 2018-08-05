@@ -23,7 +23,8 @@ def check_bot():
             no.append(thing)
     if no:
         for thing in no:
-            print("No \'{}\' found... Exiting program.".format(thing))
+            print("No \'{}\' found.".format(thing))
+        print("Exiting Program...")
         os.sys.exit(1)
 
 def _event_handler(event_type : str, slack_event : dict):
@@ -41,7 +42,7 @@ def _event_handler(event_type : str, slack_event : dict):
         event_text = slack_event["event"]["text"]
 
         if user_id:
-            augusta.echo_message(team_id, user_id, "<@{}> said: \"{}\"".format(user_id, event_text))
+            augusta.send_message(team_id, user_id, event_text)
         return make_response("Message Sent", 200,)
     if event_type == "pin_added":
         return make_response("Pin Updated", 200,)
@@ -50,10 +51,11 @@ def _event_handler(event_type : str, slack_event : dict):
     if event_type == "message":
         if slack_event["event"]["channel_type"] == "im":
             user_id = slack_event["event"].get("user")
+            team_id = slack_event["event"]["channel"]
             event_text = slack_event["event"]["text"]
 
             if user_id:
-                augusta.echo_dm(user_id, "You said: \"{}\"".format(event_text))
+                augusta.send_message(team_id, user_id, event_text, True)
             return make_response("IM Message Sent", 200,)
 
     return make_response("No Event Handler For {}".format(event_type), 404,)
