@@ -41,14 +41,14 @@ class Message(object):
         :param text: the text to be parsed
         :return: the result of the command that was parsed
         """
-        command = [cmd for cmd in manager.keywords if cmd in text]
+        command = [cmd for cmd in manager.commands if cmd in text]
         if len(command) > 1 and "help" not in command:
             return "Too many commands pls no :cry:"
         elif len(command) > 1 and "help" in command:
-            help_with = command.remove("help")
-            s = "Here's some help:\n"
-            for thing in help_with:
-                s += manager.help(thing)
+            command.remove("help")
+            s = ""
+            for cmd in command:
+                s += manager.help(cmd)
             return self.code_block(s)
 
         print("Command: {}".format(command))

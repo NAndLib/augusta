@@ -13,7 +13,7 @@ import os
 class Manager(object):
     # All the commands that we will allow for the bot
     def __init__(self):
-        self.commands = {
+        self.commands_list = {
             "deadline"              : "Display the nearest assignment deadline.",
             "grades"                : "Sends a private message with your current grades for the class.",
             "GPA"                   : "Sends a private message with your current GPA for the class.",
@@ -23,7 +23,12 @@ class Manager(object):
             "help [COMMAND]"        : "Display this help block with useful information. If a command is provided then "
                                       "only the information for that command will be displayed.",
         }
-        self.keywords = [key.split(" ")[0] for key in self.commands.keys()]
+
+        # Parsed dictionary of { command : [args] }
+        self.commands = {}
+        for key in self.commands_list:
+            command, *args = key.split(' ')
+            self.commands[command] = args
 
     def help(self, command = ""):
         """
@@ -34,13 +39,16 @@ class Manager(object):
         """
         if command:
             if self.commands.get(command):
-                return "{}: \n\t\t{}\n".format(command, self.commands[command])
+                s = "Here's some help\n"
+                return s + "{}: \n\t\t{}\n".format(command,
+                                               self.commands_list["{cmd} {args}".format(
+                                                   cmd=command, args=" ".join(self.commands[command]))])
             else:
-                return "Command {} not found. Type @augusta help for list of all commands."
+                return "Command {} not found. Type @augusta help for list of all commands.".format(command)
 
         s = "You can tell me to do these commands by mentioning me in a channel I'm invited to, or sliding right into" \
-            "my DMs with a sentence that contains the command you want.\n"
+            " my DMs with a sentence that contains the command you want.\n"
         s += "Please wrap any arguments you have for the commands in braces [] (e.g @augusta add [Bot, Augusta]).\n"
-        for command in self.commands:
-            s += "{}: \n\t\t{}\n".format(command, self.commands[command])
+        for command in self.commands_list:
+            s += "{}: \n\t\t{}\n".format(command, self.commands_list[command])
         return s
