@@ -59,7 +59,7 @@
 ## Employment:
 - [x] Rewrite "Experience" section for Resume.
     - [x] Reformatted the entire resume
-- [ ] Finish "Contacts" section for webpage.
+- [x] Finish "Contacts" section for webpage.
 - [ ] Finish at least 4 `medium` coding problems.
 
 ## Cozy:
