@@ -2,17 +2,17 @@
 ### TODO's:
 ## Augusta:
 - [x] Get repository up and running.
-- [ ] Sketch architecture and design for AugustaBot.
+- [x] Sketch architecture and design for AugustaBot.
     - [x] Make VirtualEnv.
     - [x] Read documentations and tutorials.
-    - [ ] Specify functionality.
-    - [ ] Architecture.
-        - [ ] app.py: Calls upon bot.py
+    - [x] Specify functionality.
+    - [x] Architecture.
+        - [x] app.py: Calls upon bot.py
             - Manages the Flask microframework for Augusta.
             - Listens to events and processes them: parsing, event type, user
             information, etc.
             - Handles parsed events to the bot.
-        - [ ] bot.py:
+        - [x] bot.py:
             - Bot object:
                 - Bot name: Name of the bot
                 - Client: The actual SlackClient Event API
@@ -25,7 +25,7 @@
             - Handles opening and switching between channels.
             - Handles updating messages and statuses.
             - Handles storing information about channels and users.
-        - [ ] message.py:
+        - [x] message.py:
             - Message object:
                 - Channel: the channel the message is currently in.
                 - Time stamp: the time the message was sent.
@@ -37,7 +37,7 @@
                     - Share attachment: shared message.
             - Handles crafting more complicated message and keeping track of
             which message belongs to who.
-        - [ ] manager.py: BIG ONE might have to split into smaller sub-files
+        - [x] manager.py: BIG ONE might have to split into smaller sub-files
             - Manager object:
                 - All fields are loaded files.
                 - Student IDs.
@@ -57,9 +57,14 @@
 - [ ] Take a look at past assignments.
 
 ## Employment:
-- [ ] Rewrite "Experience" section for Resume.
+- [x] Rewrite "Experience" section for Resume.
+    - [x] Reformatted the entire resume
 - [ ] Finish "Contacts" section for webpage.
 - [ ] Finish at least 4 `medium` coding problems.
 
 ## Cozy:
 - [ ] Read: "[Dimensions in Program Synthesis](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/12/ppdp10-synthesis.pdf)".
+- **NEW**: Redesigned nightly run. Ran `lazy_filter` and `swapping_foldsum` for
+8 hours on micro benchmarks.
+    - No changes. However, `lazy_filter` needs at least 5 hours to find the
+        `exist` solution.
