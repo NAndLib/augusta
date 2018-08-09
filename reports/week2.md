@@ -2,7 +2,8 @@
 ### Last week's accomplishments: [week 1](week1.md)
 It seems like last week had a bit too much going on when also paired with my
 personal schedule, this week I will tone it down a bit and see how I will fair.
-<details><summary>Details...</summary>
+<details><summary><b>Details</b></summary>
+
 ## Augusta:
 - Repo up and running.
 - Augusta **now has an architecture** and she can already receive events from
