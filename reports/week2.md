@@ -1,5 +1,5 @@
 #### Week 2 Progress [August 9th - August 16th]
-### Last week's accomplishments:
+### Last week's accomplishments: [week 1](week1.md)
 ## Augusta:
 - Repo up and running.
 - Augusta **now has an architecture** and she can already receive events from
