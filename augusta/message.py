@@ -34,7 +34,7 @@ class Message(object):
             if attachment:
                 self.attachments.append(attachment)
 
-    def parse_command(self, text):
+    def parse_command(self, text, user_id=""):
         """
         Parses the message to find the correct command to pass to the manager
 
