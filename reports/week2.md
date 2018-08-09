@@ -1,5 +1,8 @@
 #### Week 2 Progress [August 9th - August 16th]
 ### Last week's accomplishments: [week 1](week1.md)
+It seems like last week had a bit too much going on when also paired with my
+personal schedule, this week I will tone it down a bit and see how I will fair.
+
 ## Augusta:
 - Repo up and running.
 - Augusta **now has an architecture** and she can already receive events from
@@ -29,3 +32,23 @@ without the flag.
     - [ ] Email support@cs.washington.edu about attu6 being slow.
 - [ ] Get looking at the real world case studies ASAP. Preferably by Aug 12th.
 - [ ] Email Calvin and Mike about progress on Aug 13th.
+
+## Augusta:
+- [ ] Design a good command parsing algorithm
+    - [ ] This should make our lives A LOT easier.
+- [ ] Finish `Add` command.
+- [ ] Manager now able to link `[STUDENT_ID] -> [SLACK_ID]` and vice versa.
+    - [ ] Design a proper information storage for Augusta.
+        - [ ] CSV.
+        - [ ] MySQL.
+
+## Employment:
+- See what
+[this](https://www.cs.washington.edu/academics/ugrad/enrichment/research)
+is all about
+- Do _at least_ 3 `medium` coding problems.
+- Finish `Home` and `About` pages on website.
+- Look at job descriptions and research companies.
+
+## Teaching Assistance:
+- [ ] Read the first page of the manual.
