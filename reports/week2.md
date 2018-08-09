@@ -45,7 +45,7 @@ without the flag.
         - [ ] MySQL.
 
 ## Employment:
-- See what
+- [ ] See what
 [this](https://www.cs.washington.edu/academics/ugrad/enrichment/research)
 is all about
 - [ ] Do _at least_ 3 `medium` coding problems.
