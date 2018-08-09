@@ -18,3 +18,14 @@ Slack.
 - Ran `lazy_filter` and `swapping_foldsum` for 8 hours. _NO_ change. However,
 `lazy_filter` requires at least 3-5 hours to reach the same solution as
 without the flag.
+
+### TODO's
+## Cozy:
+- [ ] Finish designing and testing nightly run.
+    - [ ] Should add a way for it to notify us of performance drops.
+- [ ] Run more micro-benchmarks for 8 hours.
+    - [ ] Email Calvin and ask which one he suspects to change. Because attu can't
+    handle too many 8-hour runs.
+    - [ ] Email support@cs.washington.edu about attu6 being slow.
+- [ ] Get looking at the real world case studies ASAP. Preferably by Aug 12th.
+- [ ] Email Calvin and Mike about progress on Aug 13th.
