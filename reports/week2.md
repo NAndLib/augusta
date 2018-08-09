@@ -48,9 +48,9 @@ without the flag.
 - See what
 [this](https://www.cs.washington.edu/academics/ugrad/enrichment/research)
 is all about
-- Do _at least_ 3 `medium` coding problems.
-- Finish `Home` and `About` pages on website.
-- Look at job descriptions and research companies.
+- [ ] Do _at least_ 3 `medium` coding problems.
+- [ ] Finish `Home` and `About` pages on website.
+- [ ] Look at job descriptions and research companies.
 
 ## Teaching Assistance:
 - [ ] Read the first page of the manual.
