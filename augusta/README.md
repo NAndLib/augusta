@@ -16,19 +16,19 @@ Commands can be issued to AugustaBot by doing `@AugustaBot <command>`.
 
 The commands that be used with AugustaBot are:
 
-|     **Command**     |       **Description**       |
-|---------------------|-----------------------------|
-|                     |                             |
-|                     |                             |
-|                     |                             |
-|                     |                             |
-|                     |                             |
-|                     |                             |
-|                     |                             |
-|                     |                             |
-|                     |                             |
-|                     |                             |
-|                     |                             |
-|                     |                             |
-|                     |                             |
-|                     |                             |
+|**Command**|**Description**|
+|:-:|:-:|
+|help|Prints out a message with commands|
+|||
+|||
+|||
+|||
+|||
+|||
+|||
+|||
+|||
+|||
+|||
+|||
+|||
