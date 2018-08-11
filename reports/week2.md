@@ -38,6 +38,10 @@ without the flag.
 ## Augusta:
 - [ ] Design a good command parsing algorithm
     - [ ] This should make our lives A LOT easier.
+    - [x] Parsing commands moved to Bot. Message now just makes the message
+    given a command.
+        - This makes it so we only have to add a few lines in make_message to
+        for every command because the bulk work is done by the manager method.
 - [x] Finish `Add` command.
 - [x] Manager now able to link `[STUDENT_ID] -> [SLACK_ID]` and vice versa.
     - [x] Design a proper information storage for Augusta.
