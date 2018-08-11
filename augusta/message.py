@@ -34,33 +34,33 @@ class Message(object):
             if attachment:
                 self.attachments.append(attachment)
 
-    def parse_command(self, text, user_id=""):
+    def make_message(self, command, *args):
         """
-        Parses the message to find the correct command to pass to the manager
+        Calls the command passed with the necessary arguments
 
-        :param text: the text to be parsed
-        :return: the result of the command that was parsed
+        :param commmand: the command for the manager
+        :param kwargs:   any parameters needed
+        :return: the message that is going be sent
         """
-        command = [cmd for cmd in manager.commands if cmd in text]
-        if len(command) > 1 and "help" not in command:
-            return "Too many commands pls no :cry:"
-        elif len(command) > 1 and "help" in command:
-            command.remove("help")
-            s = ""
-            for cmd in command:
-                s += manager.help(cmd)
-            return self.code_block(s)
+        s = "I don't understand what you wanted me to do."
+        if manager.commands.get(command):
+            if command == "add":
+                if len(args) < 3:
+                    s = "You didn't give me enough info for add"
+                else:
+                    success, message = manager.add(args[0], args[1], args[2])
+                    if not success:
+                        s = message
+                    else:
+                        return "You've been successfully added :smile:"
+            if command == "help":
+                if args:
+                    s = manager.help(args[0])
+                else:
+                    s = manager.help()
+                return self.code_block(s)
 
-        print("Command: {}".format(command))
-        if command:
-            function = getattr(manager, command.pop(), None)
-            args = text[text.index("[") + 1:text.index("]")] if "[" in text and "]" in text else ""
-
-            if function:
-                return self.code_block(function(args) if args else function())
-
-        return "I don't understand \"{}\"... Type `help` for a list of commands.".format(text)
-
+        return s + "\n Type @augusta help to see what I can do."
 
     def code_block(self, message):
         """

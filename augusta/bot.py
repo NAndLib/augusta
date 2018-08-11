@@ -9,8 +9,8 @@ Slack Client API.
 import os
 from slackclient import SlackClient
 
-import message
-import manager
+from message import Message, manager
+
 
 authed_teams = {}
 
@@ -68,14 +68,8 @@ class Bot(object):
         """
         team_id = self.slide_into_dm(user_id) if is_dm else team_id
 
-        if self.messages.get(team_id):
-            self.messages[team_id].update({user_id : message.Message(channel=team_id)})
-        else:
-            self.messages[team_id] = {user_id : message.Message(channel=team_id)}
+        msg = self.parse_message(message=text, team_id=team_id, user_id=user_id)
 
-        msg = self.messages[team_id][user_id]
-
-        msg.text = msg.parse_command(text)
         posted_message = self.client.api_call("chat.postMessage",
                                               channel=msg.channel,
                                               username=self.name,
@@ -97,18 +91,13 @@ class Bot(object):
 
         return user_dm["channel"]["id"]
 
-    def echo_dm(self, user_id, text=""):
+    def echo_dm(self, user_id, message=""):
         team_id = self.slide_into_dm(user_id)
 
-        self.echo_message(team_id, user_id, text)
+        self.echo_message(team_id, user_id, message)
 
-    def echo_message(self, team_id, user_id, text =""):
-        if self.messages.get(team_id):
-            self.messages[team_id].update({user_id : message.Message(channel=team_id, text=text)})
-        else:
-            self.messages[team_id] = {user_id : message.Message(channel=team_id, text=text)}
-
-        message_obj = self.messages[team_id][user_id]
+    def echo_message(self, team_id, user_id, message =""):
+        message_obj = self.parse_message(message, team_id, user_id)
         posted_message = self.client.api_call("chat.postMessage",
                                               channel=message_obj.channel,
                                               username=self.name,
@@ -119,3 +108,39 @@ class Bot(object):
         else:
             print("Message Sending Unsuccessful")
             print("Error: {error}".format(error=posted_message["error"]))
+
+    # def parse_command(self, text, user_id=""):
+    #     """
+    #     Parses the message to find the correct command to pass to the manager
+    #
+    #     :param text: the text to be parsed
+    #     :return: the result of the command that was parsed
+    #     """
+    def parse_message(self, message, team_id, user_id):
+        """
+        Parses the message and filters out commands and arguments
+
+        :param message: the message to be parsed
+        :param team_id: the channel
+        :param user_id: the user_id
+        :return: A message object with the command output
+        """
+        if self.messages.get(team_id):
+            self.messages[team_id].update({user_id : Message(channel=team_id)})
+        else:
+            self.messages[team_id] = {user_id : Message(channel=team_id)}
+
+        message_obj = self.messages[team_id][user_id]
+
+        command = [cmd for cmd in manager.commands if cmd in message]
+        if len(command) > 1 and "help" not in command:
+            message_obj.text = message_obj.make_message('error')
+        elif len(command) == 2 and "help" in command:
+            message_obj.text = message_obj.make_message('help', command[1])
+
+        print("Trying to parse command: {}".format(command))
+        args_text = message[message.index('[') + 1:message.index(']')] if '[' in message and ']' in message else ''
+
+        message_obj.text = message_obj.make_message(command.pop(), *args_text.split(' '))
+
+        return message_obj
