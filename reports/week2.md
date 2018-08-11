@@ -38,10 +38,10 @@ without the flag.
 ## Augusta:
 - [ ] Design a good command parsing algorithm
     - [ ] This should make our lives A LOT easier.
-- [ ] Finish `Add` command.
-- [ ] Manager now able to link `[STUDENT_ID] -> [SLACK_ID]` and vice versa.
-    - [ ] Design a proper information storage for Augusta.
-        - [ ] CSV.
+- [x] Finish `Add` command.
+- [x] Manager now able to link `[STUDENT_ID] -> [SLACK_ID]` and vice versa.
+    - [x] Design a proper information storage for Augusta.
+        - [x] CSV.
         - [ ] MySQL.
 
 ## Employment:
@@ -49,7 +49,9 @@ without the flag.
 [this](https://www.cs.washington.edu/academics/ugrad/enrichment/research)
 is all about
 - [ ] Do _at least_ 3 `medium` coding problems.
-- [ ] Finish `Home` and `About` pages on website.
+- [x] Finish `Home` and `About` pages on website.
+    - Website is pretty complete, with the exception of continuing the blurb on
+    the `About` page.
 - [ ] Look at job descriptions and research companies.
 
 ## Teaching Assistance:
