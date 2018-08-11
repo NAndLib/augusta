@@ -109,13 +109,6 @@ class Bot(object):
             print("Message Sending Unsuccessful")
             print("Error: {error}".format(error=posted_message["error"]))
 
-    # def parse_command(self, text, user_id=""):
-    #     """
-    #     Parses the message to find the correct command to pass to the manager
-    #
-    #     :param text: the text to be parsed
-    #     :return: the result of the command that was parsed
-    #     """
     def parse_message(self, message, team_id, user_id):
         """
         Parses the message and filters out commands and arguments
