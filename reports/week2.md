@@ -28,12 +28,19 @@ without the flag.
 ## Cozy:
 - [ ] Finish designing and testing nightly run.
     - [ ] Should add a way for it to notify us of performance drops.
+    - [ ] Add a way for it to mark and report failed runs.
 - [x] Run more micro-benchmarks for 8 hours.
     - [x] Email Calvin and ask which one he suspects to change. Because attu can't
     handle too many 8-hour runs.
     - [x] Email support@cs.washington.edu about attu6 being slow.
-- [ ] Get looking at the real world case studies ASAP. Preferably by Aug 12th.
-- [ ] Email Calvin and Mike about progress on Aug 13th.
+- [x] Get looking at the real world case studies ASAP. Preferably by Aug 12th.
+    - [ ] Check Calvin's email on what to do:
+        - [x] Fork the repos for Myria and Bullet.
+        - [x] Create two branches `cozy-original` and `cozy-synth` on the
+        specific commits.
+        - [ ] The `cozy-synth` branch should have extra `specs` files and
+        benchmark files -> Check the `Makefile` in the `original` folder.
+- [x] Email Calvin and Mike about progress on Aug 13th.
 
 ## Augusta:
 - [ ] Design a good command parsing algorithm
