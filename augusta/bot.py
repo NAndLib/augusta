@@ -57,6 +57,16 @@ class Bot(object):
         print("Restarting Client")
         self.client = SlackClient(authed_teams[team_id]["bot_token"])
 
+    def slide_into_dm(self, user_id):
+        """
+        Opens a direct message channel to a user
+        :param user_id: the user that we want to slide into the DM's of
+        :return: the channel ID of the user's DM
+        """
+        user_dm = self.client.api_call("im.open", user=user_id)
+
+        return user_dm["channel"]["id"]
+
     def send_message(self, team_id, user_id, text ="", is_dm = False):
         """
         Creates a new message from whatever the text is and send it to the correct channel
@@ -77,34 +87,6 @@ class Bot(object):
         if posted_message["ok"]:
             time_stamp = posted_message["ts"]
             msg.ts = time_stamp
-        else:
-            print("Message Sending Unsuccessful")
-            print("Error: {error}".format(error=posted_message["error"]))
-
-    def slide_into_dm(self, user_id):
-        """
-        Opens a direct message channel to a user
-        :param user_id: the user that we want to slide into the DM's of
-        :return: the channel ID of the user's DM
-        """
-        user_dm = self.client.api_call("im.open", user=user_id)
-
-        return user_dm["channel"]["id"]
-
-    def echo_dm(self, user_id, message=""):
-        team_id = self.slide_into_dm(user_id)
-
-        self.echo_message(team_id, user_id, message)
-
-    def echo_message(self, team_id, user_id, message =""):
-        message_obj = self.parse_message(message, team_id, user_id)
-        posted_message = self.client.api_call("chat.postMessage",
-                                              channel=message_obj.channel,
-                                              username=self.name,
-                                              text=message_obj.text)
-        if posted_message["ok"]:
-            time_stamp = posted_message["ts"]
-            message_obj.ts = time_stamp
         else:
             print("Message Sending Unsuccessful")
             print("Error: {error}".format(error=posted_message["error"]))
@@ -137,3 +119,22 @@ class Bot(object):
         message_obj.text = message_obj.make_message(command.pop(), *args_text.split(' '))
 
         return message_obj
+
+    def echo_dm(self, user_id, message=""):
+        team_id = self.slide_into_dm(user_id)
+
+        self.echo_message(team_id, user_id, message)
+
+    def echo_message(self, team_id, user_id, message =""):
+        message_obj = self.parse_message(message, team_id, user_id)
+        posted_message = self.client.api_call("chat.postMessage",
+                                              channel=message_obj.channel,
+                                              username=self.name,
+                                              text=message_obj.text)
+        if posted_message["ok"]:
+            time_stamp = posted_message["ts"]
+            message_obj.ts = time_stamp
+        else:
+            print("Message Sending Unsuccessful")
+            print("Error: {error}".format(error=posted_message["error"]))
+
