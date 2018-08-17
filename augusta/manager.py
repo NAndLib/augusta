@@ -23,8 +23,8 @@ class Manager(object):
             "GPA"                       : "Sends a private message with your current GPA for the class.",
             "add LAST, FIRST"           : "Adds you as a student that Augusta recognizes. You must type the same last "
                                           "first name as the one you have on the student page.",
-            "addSID [SID] [LAST, FIRST]": "Only works in IM. Adds you using your SID instead of name. Used when "
-                                          "you get \"Duplicate name\" when trying to add yourself",
+            "addSID [SID]"              : "Only works with direct messages to Augusta. Adds you using your SID instead "
+                                          "of name. Use when you get \"Duplicate name\" when trying to add yourself",
             "exams [LOCATION|TIME]"     : "Display exam information. Will only provide the LOCATION or TIME if one of them is "
                                           "asked for.",
             "help [COMMAND]"            : "Display this help block with useful information. If a command is provided then "
