@@ -42,9 +42,13 @@ class Message(object):
         :param kwargs:   any parameters needed
         :return: the message that is going be sent
         """
-        s = "I don't understand what you wanted me to do."
+        if args:
+            print("Args: {}".format(args))
+
+        s = "I don't understand what \"{}\" is...".format(command)
         if manager.commands.get(command):
             if command == "add":
+                # this includes the user_id needed for `add`
                 if len(args) < 3:
                     s = "You didn't give me enough info for add"
                 else:
@@ -60,7 +64,7 @@ class Message(object):
                     s = manager.help()
                 return self.code_block(s)
 
-        return s + "\n Type @augusta help to see what I can do."
+        return s + "\nType \'@augusta help\' for a list of things I can do."
 
     def code_block(self, message):
         """
