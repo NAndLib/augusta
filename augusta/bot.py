@@ -114,9 +114,10 @@ class Bot(object):
             message_obj.text = message_obj.make_message('help', command[1])
 
         print("Trying to parse command: {}".format(command))
+
         args_text = message[message.index('[') + 1:message.index(']')] if '[' in message and ']' in message else ''
 
-        message_obj.text = message_obj.make_message(command.pop(), *args_text.split(' '))
+        message_obj.text = message_obj.make_message(command.pop(), *args_text.split(' '), user_id)
 
         return message_obj
 
@@ -137,4 +138,3 @@ class Bot(object):
         else:
             print("Message Sending Unsuccessful")
             print("Error: {error}".format(error=posted_message["error"]))
-
