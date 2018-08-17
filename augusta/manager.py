@@ -71,7 +71,8 @@ class Manager(object):
         :param first:   the user's first name
         :return: (True, "Success") iff the user was linked successfully (False, "Reason") otherwise
         """
-        name = "{first} {last}".format(last=last, first=first)
+        # Removing the trailing ','
+        name = "{first} {last}".format(last=last[:len(last) - 1], first=first)
 
         # Getting the SID if a student file exists
         sid = None
