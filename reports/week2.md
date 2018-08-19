@@ -26,25 +26,25 @@ without the flag.
 
 ### TODO's
 ## Cozy:
-- [ ] Finish designing and testing nightly run.
-    - [ ] Should add a way for it to notify us of performance drops.
-    - [ ] Add a way for it to mark and report failed runs.
+- [x] Finish designing and testing nightly run.
+    - [x] Should add a way for it to notify us of performance drops.
+    - [x] Add a way for it to mark and report failed runs.
 - [x] Run more micro-benchmarks for 8 hours.
     - [x] Email Calvin and ask which one he suspects to change. Because attu can't
     handle too many 8-hour runs.
     - [x] Email support@cs.washington.edu about attu6 being slow.
 - [x] Get looking at the real world case studies ASAP. Preferably by Aug 12th.
-    - [ ] Check Calvin's email on what to do:
+    - [x] Check Calvin's email on what to do:
         - [x] Fork the repos for Myria and Bullet.
         - [x] Create two branches `cozy-original` and `cozy-synth` on the
         specific commits.
-        - [ ] The `cozy-synth` branch should have extra `specs` files and
+        - [x] The `cozy-synth` branch should have extra `specs` files and
         benchmark files -> Check the `Makefile` in the `original` folder.
 - [x] Email Calvin and Mike about progress on Aug 13th.
 
 ## Augusta:
-- [ ] Design a good command parsing algorithm
-    - [ ] This should make our lives A LOT easier.
+- [x] Design a good command parsing algorithm
+    - [x] This should make our lives A LOT easier.
     - [x] Parsing commands moved to Bot. Message now just makes the message
     given a command.
         - This makes it so we only have to add a few lines in make_message to
