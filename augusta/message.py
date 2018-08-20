@@ -45,7 +45,7 @@ class Message(object):
         if args:
             print("Args: {}".format(args))
 
-        s = "I don't understand what \"{}\" is...".format(command)
+        s = "I'm sorry... But my developer hasn't implmented {} yet :neutral_face:".format(command)
         if manager.commands.get(command):
             if command == "addSID":
                 # need sid, user_id, is_dm
