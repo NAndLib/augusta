@@ -126,7 +126,7 @@ class Manager(object):
                             found = True
                             name = row[Student.NAME]
                         else:
-                            return (False, "Duplicate SID... Someone made a boo boo somewhere :sad:")
+                            return (False, "Duplicate SID... Someone made a boo boo somewhere :neutral_face:")
             if not found:
                 return (False, "No student information found")
         else:
