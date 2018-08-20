@@ -27,7 +27,7 @@ class Manager(object):
             "deadline"                  : "Display the nearest assignment deadline.",
             "grades"                    : "Sends a private message with your current grades for the class.",
             "GPA"                       : "Sends a private message with your current GPA for the class.",
-            "add LAST, FIRST"           : "Adds you as a student that Augusta recognizes. You must type the same last "
+            "add [LAST, FIRST]"         : "Adds you as a student that Augusta recognizes. You must type the same last."
                                           "first name as the one you have on the student page.",
             "addSID [SID]"              : "Only works with direct messages to Augusta. Adds you using your SID instead "
                                           "of name. Use when you get \"Duplicate name\" when trying to add yourself",
