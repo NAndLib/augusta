@@ -42,6 +42,9 @@ change the indices of the information based on the format of the CSV file.
             - It is the profiling api. I don't know what the hell that means
             yet.
         - [ ] Write the Spec.
+            - A spec has been written but I'm unsure if it is correct.
+            - One of the ops is taking a very long time be processed by the
+            solver.
         - [ ] Make the sub-module in Cozy.
         - [ ] Write the necessary Makefile portion.
     - [ ] Write Cozy specs for Bullet
