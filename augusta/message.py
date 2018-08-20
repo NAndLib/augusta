@@ -47,10 +47,20 @@ class Message(object):
 
         s = "I don't understand what \"{}\" is...".format(command)
         if manager.commands.get(command):
-            if command == "add":
-                # this includes the user_id needed for `add`
+            if command == "addSID":
+                # need sid, user_id, is_dm
                 if len(args) < 3:
-                    s = "You didn't give me enough info for add"
+                    s = "You didn't give me enough info for \"addSID\""
+                else:
+                    success, message = manager.addSID(args[0], args[1], args[2])
+                    if not success:
+                        s= message
+                    else:
+                        return "You've been successfully added :smile:"
+            if command == "add":
+                # need last, first, user_id
+                if len(args) < 3:
+                    s = "You didn't give me enough info for \"add\""
                 else:
                     success, message = manager.add(args[0], args[1], args[2])
                     if not success:
