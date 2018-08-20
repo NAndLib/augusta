@@ -108,6 +108,10 @@ class Bot(object):
         message_obj = self.messages[team_id][user_id]
 
         command = [cmd for cmd in manager.commands if cmd in message]
+        if not command:
+            message_obj.text = "I don't understand what you just said. Type `@augusta help` for a list of things I do understand."
+            return message_obj
+
         if len(command) > 1 and "help" not in command:
             message_obj.text = message_obj.make_message('error')
         elif len(command) == 2 and "help" in command:
