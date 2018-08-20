@@ -16,11 +16,13 @@ Commands can be issued to AugustaBot by doing `@AugustaBot <command>`.
 
 The commands that be used with AugustaBot are:
 
+All arguments must be wrapped in `[]` blocks.
+
 |**Command**|**Description**|
 |:-:|:-:|
 |help|Prints out a message with commands|
-|||
-|||
+|add [Last, First]|Links the user's full name to their Slack ID, if the user is a student, then the name MUST match the one in the school's database.|
+|addSID [SID]|Same as `add` but using the Student's Identification number. Only works when the command is issued in a direct message channel.|
 |||
 |||
 |||
