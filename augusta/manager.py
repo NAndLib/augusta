@@ -112,6 +112,9 @@ class Manager(object):
         :param user_id: the Slack user ID
         :return: (True, "Success") iff the user was linked successfully (False, "Reason") otherwise
         """
+        if not is_dm:
+            return (False, "I can't do that in public :frowning:")
+
         name = None
 
         # Getting the name of the student if a student file exists
