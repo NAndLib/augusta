@@ -78,7 +78,7 @@ class Bot(object):
         """
         team_id = self.slide_into_dm(user_id) if is_dm else team_id
 
-        msg = self.parse_message(message=text, team_id=team_id, user_id=user_id)
+        msg = self.parse_message(message=text, team_id=team_id, user_id=user_id, is_dm=is_dm)
 
         posted_message = self.client.api_call("chat.postMessage",
                                               channel=msg.channel,
@@ -91,7 +91,7 @@ class Bot(object):
             print("Message Sending Unsuccessful")
             print("Error: {error}".format(error=posted_message["error"]))
 
-    def parse_message(self, message, team_id, user_id):
+    def parse_message(self, message, team_id, user_id, is_dm = False):
         """
         Parses the message and filters out commands and arguments
 
@@ -117,7 +117,7 @@ class Bot(object):
 
         args_text = message[message.index('[') + 1:message.index(']')] if '[' in message and ']' in message else ''
 
-        message_obj.text = message_obj.make_message(command.pop(), *args_text.split(' '), user_id)
+        message_obj.text = message_obj.make_message(command.pop(), *args_text.split(' '), user_id, is_dm)
 
         return message_obj
 
