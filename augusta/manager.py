@@ -11,8 +11,14 @@ Manager that works with files saved in "data" folder and parsing commands.
 import os
 import csv
 
-students_file_name = "data/students.csv"
-users_file_name = "data/users.csv"
+STUDENTS_FILE = "data/students.csv"
+USERS_FILE = "data/users.csv"
+
+# Keeps track of the indices of the CSV file
+# This is to account for difference formatting of the student.csv file
+class Student(enumerate):
+    ID      = 0
+    NAME    = 1
 
 class Manager(object):
     # All the commands that we will allow for the bot
@@ -69,6 +75,7 @@ class Manager(object):
 
         :param last:    the user's last name
         :param first:   the user's first name
+        :param user_id: the Slack user ID
         :return: (True, "Success") iff the user was linked successfully (False, "Reason") otherwise
         """
         # Removing the trailing ','
@@ -76,15 +83,15 @@ class Manager(object):
 
         # Getting the SID if a student file exists
         sid = None
-        if os.path.isfile(students_file_name):
+        if os.path.isfile(STUDENTS_FILE):
             found = False
-            with open(students_file_name, 'r', newline='') as s_file:
+            with open(STUDENTS_FILE, 'r', newline='') as s_file:
                 student_data = csv.reader(s_file)
                 for row in student_data:
-                    if name == row[1]:
+                    if name == row[Student.NAME]:
                         if not found:
                             found = True
-                            sid = row[0]
+                            sid = row[Student.ID]
                         else:
                             return (False, "Duplicate name: {}".format(name))
             if not found:
@@ -92,20 +99,55 @@ class Manager(object):
         else:
             print("No students file.")
 
-        # Checking if the user already exists
-        if os.path.isfile(users_file_name):
-            with open(users_file_name, 'r', newline='') as u_file:
-                user_data = csv.reader(u_file)
-
-                #### Each row should look like this:
-                ## ['Slack_ID', 'Name', 'SID']
-                for row in user_data:
-                    if row[0] == user_id:
-                        return (False, "User already exists.")
-        with open(users_file_name, 'a+', newline='') as u_file:
-            csv_writer = csv.writer(u_file)
-
-            new_row = [user_id, name, sid if sid else "None"]
-            csv_writer.writerow(new_row)
+        write_user(user_id, name, sid)
 
         return (True, "Success")
+
+    def addSID(self, sid, user_id, is_dm):
+        """
+        Adds a student by their SID instead of their first and last name. Only works if the command was invoked
+        inside a direct message channel.
+
+        :param sid:     the Student's Identification Number
+        :param user_id: the Slack user ID
+        :return: (True, "Success") iff the user was linked successfully (False, "Reason") otherwise
+        """
+        name = None
+
+        # Getting the name of the student if a student file exists
+        if os.path.isfile(STUDENTS_FILE):
+            found = False
+            with open(STUDENTS_FILE, 'r', newline='') as s_file:
+                student_data = csv.reader(s_file)
+                for row in student_data:
+                    if sid == row[Student.ID]:
+                        if not found:
+                            found = True
+                            name = row[Student.NAME]
+                        else:
+                            return (False, "Duplicate SID... Someone made a boo boo somewhere :sad:")
+            if not found:
+                return (False, "No student information found")
+        else:
+            print("No students file.")
+
+        write_user(user_id, name, sid)
+
+        return (True, "Success")
+
+def write_user(user_id, name, sid = None):
+    # Checking if the user already exists
+    if os.path.isfile(USERS_FILE):
+        with open(USERS_FILE, 'r', newline='') as u_file:
+            user_data = csv.reader(u_file)
+
+            #### Each row should look like this:
+            ## ['Slack_ID', 'Name', 'SID']
+            for row in user_data:
+                if row[0] == user_id:
+                    return (False, "User already exists.")
+    with open(USERS_FILE, 'a+', newline='') as u_file:
+        csv_writer = csv.writer(u_file)
+
+        new_row = [user_id, name, sid if sid else "None"]
+        csv_writer.writerow(new_row)
