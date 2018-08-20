@@ -37,14 +37,16 @@ change the indices of the information based on the format of the CSV file.
 ## Cozy:
 - [ ] Primary focus is the followup evaluation
     - [ ] Write Cozy specs for Myria
-        - [ ] Figure out which parts needs to be converted to specs. This might
+        - [x] Figure out which parts needs to be converted to specs. This might
         include reverse engineering the `original` folder.
             - It is the profiling api. I don't know what the hell that means
             yet.
-        - [ ] Write the Spec.
+        - [x] Write the Spec.
             - A spec has been written but I'm unsure if it is correct.
             - One of the ops is taking a very long time be processed by the
             solver.
+        - [ ] Make sure the Spec is correct.
+            - BOI.
         - [ ] Make the sub-module in Cozy.
         - [ ] Write the necessary Makefile portion.
     - [ ] Write Cozy specs for Bullet
@@ -59,6 +61,11 @@ change the indices of the information based on the format of the CSV file.
 
 ## Augusta:
 - [ ] Add the rest of the commands.
+    - [x] `addSID`
+    - [ ] `deadline`
+    - [ ] `grades`
+    - [ ] `GPA`
+    - [ ] `exams`
 - [ ] Testing framework: Tests things that can reasonably be tested locally.
     - [ ] Add tests for Manager.
     - [ ] Add tests for Message.
