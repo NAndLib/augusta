@@ -35,6 +35,7 @@ class Manager(object):
                                           "asked for.",
             "help [COMMAND]"            : "Display this help block with useful information. If a command is provided then "
                                           "only the information for that command will be displayed.",
+            "suggest [FEATURE:DESC]"    : "Suggests a feature that you would like Augusta to have with a brief description of the feature."
         }
 
         # Parsed dictionary of { command : [args] }
