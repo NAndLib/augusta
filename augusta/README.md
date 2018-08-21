@@ -1,9 +1,12 @@
 # AugustaBot, Slack Teaching Assistant Assistant
 ## Introduction 
 AugustaBot is a slack bot that helps oversee a Slack channel made for
-communication between staffs and students of a class. Specifically, Augusta
-provide help with managing students, study groups, class, assignments, and
+communication between TAs and students of a class. Specifically, Augusta
+provide help with managing student, class, assignments, and helpful other
 helpful information.
+
+Augusta allows students to ask for general information when the TA is
+unavailable to provide assistance.
 
 ## Instructions
 ### Installation:
