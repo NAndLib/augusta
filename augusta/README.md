@@ -23,14 +23,7 @@ All arguments must be wrapped in `[]` blocks.
 |help|Prints out a message with commands|
 |add [Last, First]|Links the user's full name to their Slack ID, if the user is a student, then the name MUST match the one in the school's database.|
 |addSID [SID]|Same as `add` but using the Student's Identification number. Only works when the command is issued in a direct message channel.|
-|||
-|||
-|||
-|||
-|||
-|||
-|||
-|||
-|||
-|||
-|||
+|deadline|Displays the nearest assignment deadline.|
+|grades|Reports the Student's grades through the direct message channel.|
+|GPA|Displays the Student's current GPA for the class. Also shows which assignments are not being considered.|
+|exams [Location|Time]|Displays upcoming exams/quizzes information. If `Location` or `Time` is provided, then only display that information.|
