@@ -32,10 +32,10 @@ as a man.
 
 ### TODO's
 ## Employment:
-- [ ] Add the CSE 132 project to website.
+- [x] Add the CSE 132 project to website.
 - [ ] Complete `About` section on website.
-    - [ ] Write about Relationships.
-    - [ ] Conclude the page with emphasis on humor.
+    - [x] Write about Relationships.
+    - [x] Conclude the page with emphasis on humor.
     - [ ] Proof read.
 
 ## Cozy:
