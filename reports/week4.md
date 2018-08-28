@@ -52,9 +52,9 @@ as a man.
         benchmarks.
     - [ ] Pipe the `myria-query*.txt` files over to the new module.
     - In terms of the Spec:
-        - [ ] Remove handles and just use normal objects.
-        - [ ] Remove `rm` and `update*` mutators.
-        - [ ] Change `events` to be a `Bag` instead of `List`.
+        - [x] Remove handles and just use normal objects.
+        - [x] Remove `rm` and `update*` mutators.
+        - [x] Change `events` to be a `Bag` instead of `List`.
 
 ## Augusta:
 - [ ] Implement the SQLite database:
