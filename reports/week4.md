@@ -40,21 +40,25 @@ as a man.
 
 ## Cozy:
 - [ ] Myria case study:
-    - [ ] Copy over `myria-microbenchmarks` source tree.
-    - [ ] Copy over `Makefile` rules for Myria.
-    - [ ] Doctor the rule for $(GENDIR)/benchmark/DataStructure.java to use
-    new Cozy. Make any changes necessary.
-    - The structure for the old folder is: `CASESTUDY-effort.sh` and
-    `{gen,run}-CASESTUDY.sh`
-        - [ ] Convert `gen*.sh` files into `Makefile` rules that synthesizes the
-        data structure.
-        - [ ] Convert `*effort.sh` files into `Makefile` rules that run the
-        benchmarks.
+    - [x] Copy over `myria-microbenchmarks` source tree.
+    - [x] Copy over `Makefile` rules for Myria.
+    - [x] Doctor the rule for $(GENDIR)/benchmark/DataStructure.java to use
+    new Cozy. 
+    - [ ] Make any changes necessary.
+        - [ ] Understand why the generated file is so wonky.
+        - [.] Change the Main.java file in the micro-benchmark folder to
+        correspond to new generated file.
+- The structure for the old folder is: `CASESTUDY-effort.sh` and
+`{gen,run}-CASESTUDY.sh`
+    - [ ] Convert `gen*.sh` files into `Makefile` rules that synthesizes the
+    data structure.
+    - [ ] Convert `*effort.sh` files into `Makefile` rules that run the
+    benchmarks.
     - [ ] Pipe the `myria-query*.txt` files over to the new module.
-    - In terms of the Spec:
-        - [x] Remove handles and just use normal objects.
-        - [x] Remove `rm` and `update*` mutators.
-        - [x] Change `events` to be a `Bag` instead of `List`.
+- In terms of the Spec:
+    - [x] Remove handles and just use normal objects.
+    - [x] Remove `rm` and `update*` mutators.
+    - [x] Change `events` to be a `Bag` instead of `List`.
 
 ## Augusta:
 - [ ] Implement the SQLite database:
