@@ -43,18 +43,24 @@ as a man.
     - [x] Copy over `myria-microbenchmarks` source tree.
     - [x] Copy over `Makefile` rules for Myria.
     - [x] Doctor the rule for $(GENDIR)/benchmark/DataStructure.java to use
-    new Cozy. 
+    new Cozy.
     - [ ] Make any changes necessary.
-        - [ ] Understand why the generated file is so wonky.
-        - [.] Change the Main.java file in the micro-benchmark folder to
+        - [x] Understand why the generated file is so wonky.
+            - This was mainly due to it being buggy af.
+            - Some of the codegen bugs have been resolved.
+        - [x] Change the Main.java file in the micro-benchmark folder to
         correspond to new generated file.
+    - In terms of the micro-benchmarks:
+        - [x] Refactor Makefile rules to use the new rules.
+        - [x] Copy over source tree and make sure everything compiles.
+        - [ ] Get PostgreSQL to FREAKING WORK GOD.
 - The structure for the old folder is: `CASESTUDY-effort.sh` and
 `{gen,run}-CASESTUDY.sh`
     - [ ] Convert `gen*.sh` files into `Makefile` rules that synthesizes the
     data structure.
     - [ ] Convert `*effort.sh` files into `Makefile` rules that run the
     benchmarks.
-    - [ ] Pipe the `myria-query*.txt` files over to the new module.
+    - [x] Pipe the `myria-query*.txt` files over to the new module.
 - In terms of the Spec:
     - [x] Remove handles and just use normal objects.
     - [x] Remove `rm` and `update*` mutators.
