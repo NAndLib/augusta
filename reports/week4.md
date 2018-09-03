@@ -58,7 +58,7 @@ as a man.
 `{gen,run}-CASESTUDY.sh`
     - [ ] Convert `gen*.sh` files into `Makefile` rules that synthesizes the
     data structure.
-    - [ ] Convert `*effort.sh` files into `Makefile` rules that run the
+    - [ ] Convert `run*.sh` files into `Makefile` rules that run the
     benchmarks.
     - [x] Pipe the `myria-query*.txt` files over to the new module.
 - In terms of the Spec:
