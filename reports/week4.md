@@ -44,7 +44,7 @@ as a man.
     - [x] Copy over `Makefile` rules for Myria.
     - [x] Doctor the rule for $(GENDIR)/benchmark/DataStructure.java to use
     new Cozy.
-    - [ ] Make any changes necessary.
+    - [x] Make any changes necessary.
         - [x] Understand why the generated file is so wonky.
             - This was mainly due to it being buggy af.
             - Some of the codegen bugs have been resolved.
@@ -54,7 +54,6 @@ as a man.
         - [x] Refactor Makefile rules to use the new rules.
         - [x] Copy over source tree and make sure everything compiles.
         - [ ] Get PostgreSQL to FREAKING WORK GOD.
-    - [ ] **TEST THE RUN**
 - The structure for the old folder is: `CASESTUDY-effort.sh` and
 `{gen,run}-CASESTUDY.sh`
     - [x] Convert `gen*.sh` files into `Makefile` rules that synthesizes the
@@ -66,6 +65,7 @@ as a man.
     - [x] Remove handles and just use normal objects.
     - [x] Remove `rm` and `update*` mutators.
     - [x] Change `events` to be a `Bag` instead of `List`.
+- [ ] **TEST THE CASE STUDY RUN**
 
 ## Augusta:
 - [ ] Implement the SQLite database:
