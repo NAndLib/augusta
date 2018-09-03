@@ -54,11 +54,12 @@ as a man.
         - [x] Refactor Makefile rules to use the new rules.
         - [x] Copy over source tree and make sure everything compiles.
         - [ ] Get PostgreSQL to FREAKING WORK GOD.
+    - [ ] **TEST THE RUN**
 - The structure for the old folder is: `CASESTUDY-effort.sh` and
 `{gen,run}-CASESTUDY.sh`
-    - [ ] Convert `gen*.sh` files into `Makefile` rules that synthesizes the
+    - [x] Convert `gen*.sh` files into `Makefile` rules that synthesizes the
     data structure.
-    - [ ] Convert `run*.sh` files into `Makefile` rules that run the
+    - [x] Convert `run*.sh` files into `Makefile` rules that run the
     benchmarks.
     - [x] Pipe the `myria-query*.txt` files over to the new module.
 - In terms of the Spec:
