@@ -110,32 +110,3 @@ class Manager(object):
             return (False, "I ALREADY KNOW YOU, MAN!")
 
         return self.database.add_user(user_id, student_id=sid)
-
-def write_user(user_id, name, sid = None):
-    """
-    Handles checking the USER_FILE for users and adding them if they don't exist
-
-    :param user_id: the Slack user ID
-    :param name:    the user's full name
-    :param sid:     the student number
-    :return: (True, "Success") iff the user was added successfully. (False, "User already exists.") if the user already
-            exists
-    """
-    # Checking if the user already exists
-    if os.path.isfile(USERS_FILE):
-        with open(USERS_FILE, 'r', newline='') as u_file:
-            user_data = csv.reader(u_file)
-
-            #### Each row should look like this:
-            ## ['Slack_ID', 'Name', 'SID']
-            for row in user_data:
-                if row[0] == user_id:
-                    return (False, "User already exists.")
-
-    with open(USERS_FILE, 'a+', newline='') as u_file:
-        csv_writer = csv.writer(u_file)
-
-        new_row = [user_id, name, sid if sid else "None"]
-        csv_writer.writerow(new_row)
-
-    return (True, "Success")
