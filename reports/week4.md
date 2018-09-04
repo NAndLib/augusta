@@ -69,10 +69,14 @@ as a man.
 
 ## Augusta:
 - [ ] Implement the SQLite database:
-    - [ ] Design a database that makes the most sense for what we're trying to
+    - [x] Design a database that makes the most sense for what we're trying to
     achieve.
+        - Design notes found in "Notes" folder locally.
     - [ ] Write Python methods to handle the database:
-        - [ ] Connection.
+        - [x] Connection.
+            - Connect/Disconnect done.
+            - Insert done.
+            - Create/Drop done.
         - [ ] Transactions.
     - [ ] Refactor `add` and `addSID` to use the new database instead of CSVs.
 
