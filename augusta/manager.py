@@ -106,26 +106,10 @@ class Manager(object):
         if not is_dm:
             return (False, "I can't do that in public :frowning:")
 
-        name = None
+        if self.database.user_known(user_id):
+            return (False, "I ALREADY KNOW YOU, MAN!")
 
-        # Getting the name of the student if a student file exists
-        if os.path.isfile(STUDENTS_FILE):
-            found = False
-            with open(STUDENTS_FILE, 'r', newline='') as s_file:
-                student_data = csv.reader(s_file)
-                for row in student_data:
-                    if sid == row[Student.ID]:
-                        if not found:
-                            found = True
-                            name = row[Student.NAME]
-                        else:
-                            return (False, "Duplicate SID... Someone made a boo boo somewhere :neutral_face:")
-            if not found:
-                return (False, "No student information found")
-        else:
-            print("No students file.")
-
-        return write_user(user_id, name, sid)
+        return self.database.add_user(user_id, student_id=sid)
 
 def write_user(user_id, name, sid = None):
     """
