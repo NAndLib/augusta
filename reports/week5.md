@@ -39,6 +39,7 @@ accordingly.
     - [ ] Makefile rules for running the case study.
 
 ## Augusta:
+- [ ] Adjust all queries to be parameterized instead of using string.format()
 - [ ] Implement loading local data into the database:
     - [ ] Initial load.
     - [ ] Update load.
