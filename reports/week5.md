@@ -22,6 +22,32 @@ accordingly.
 ## Teaching Assistance:
 - Haha.
 
-## Employment: 
-- The website is now complete. 
+## Employment:
+- The website is now complete.
 </details>
+
+### TODO's
+## Cozy:
+- [ ] Myria case study:
+    - [ ] Get PostgreSQL to run.
+    - [ ] Improve the case study.
+        - [ ] Add support for previously unsupported operations.
+- [ ] Bullet case study:
+    - [ ] Write the Spec for.
+    - [ ] Port over any handle files.
+    - [ ] Makefile rules for Cozy generation.
+    - [ ] Makefile rules for running the case study.
+
+## Augusta:
+- [ ] Implement loading local data into the database:
+    - [ ] Initial load.
+    - [ ] Update load.
+
+- [ ] Implement deadline announcement system.
+
+## Teaching Assistance:
+- [ ] Actually read the manual. As many as possible.
+- [ ] Install Eclipse.
+
+## Employment:
+- [ ] Check out what companies are coming to the career fair this Autumn.
