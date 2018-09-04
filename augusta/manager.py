@@ -11,6 +11,8 @@ Manager that works with files saved in "data" folder and parsing commands.
 import os
 import csv
 
+from utility.database import Database
+
 STUDENTS_FILE = "data/students.csv"
 USERS_FILE = "data/users.csv"
 
@@ -43,6 +45,13 @@ class Manager(object):
         for key in self.commands_list:
             command, *args = key.split(' ')
             self.commands[command] = args
+
+        self.database = Database()
+        if not self.database.connect('data/augusta.db'):
+            raise Exception("Connection to database unsuccessful")
+
+    def close_db(self):
+        self.database.disconnect()
 
     def help(self, command = ""):
         """
@@ -79,6 +88,7 @@ class Manager(object):
         :param user_id: the Slack user ID
         :return: (True, "Success") iff the user was linked successfully (False, "Reason") otherwise
         """
+
         # Removing the trailing ','
         name = "{first} {last}".format(last=last[:len(last) - 1], first=first)
 
