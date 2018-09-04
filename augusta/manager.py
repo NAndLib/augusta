@@ -88,29 +88,11 @@ class Manager(object):
         :param user_id: the Slack user ID
         :return: (True, "Success") iff the user was linked successfully (False, "Reason") otherwise
         """
+        if self.database.user_known(user_id):
+            return (False, "I ALREADY KNOW YOU, MAN!")
 
-        # Removing the trailing ','
-        name = "{first} {last}".format(last=last[:len(last) - 1], first=first)
+        return self.database.add_user(user_id, first=first, last=last)
 
-        # Getting the SID if a student file exists
-        sid = None
-        if os.path.isfile(STUDENTS_FILE):
-            found = False
-            with open(STUDENTS_FILE, 'r', newline='') as s_file:
-                student_data = csv.reader(s_file)
-                for row in student_data:
-                    if name == row[Student.NAME]:
-                        if not found:
-                            found = True
-                            sid = row[Student.ID]
-                        else:
-                            return (False, "Duplicate name: {}".format(name))
-            if not found:
-                return (False, "No student information found")
-        else:
-            print("No students file.")
-
-        return write_user(user_id, name, sid)
 
     def addSID(self, sid, user_id, is_dm):
         """
