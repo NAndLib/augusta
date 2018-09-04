@@ -47,18 +47,12 @@ class Database(object):
         :param kwargs:  The column information in the form (name, ATTRB). ATTRB can dictate any attribute of the column
         :return: (True, "Success") if the table was created successfully. (False, "Message") if otherwise
         """
-        try:
-            with self.connection:
-                query = "CREATE TABLE {name} (".format(name=table)
-                for (name, attrb) in kwargs.items():
-                    query += "{} {},".format(name, attrb)
-                query = query[:-1] + ')'
+        query = "CREATE TABLE {name} (".format(name=table)
+        for (name, attrb) in kwargs.items():
+            query += "{} {},".format(name, attrb)
+        query = query[:-1] + ')'
 
-                self.connection.execute(query)
-        except sqlite3.Error as e:
-            return (False, e.args[0])
-
-        return (True, "Success")
+        return self.execute(query)
 
     def drop_table(self, table):
         """
@@ -67,11 +61,9 @@ class Database(object):
         :param table: the table that needs dropping
         :return: None
         """
-        try:
-            with self.connection:
-                self.connection.execute("DROP TABLE {}".format(table))
-        except sqlite3.Error as e:
-            print("Error: ", e.args[0])
+        query = "DROP TABLE {}".format(table)
+
+        return self.execute(query)
 
     def insert(self, table, *data):
         """
@@ -81,15 +73,23 @@ class Database(object):
         :return: (True, "Success") if insertion was successful. (False, "Message") if not. Raises an exception if
         data already exists
         """
+        query = "INSERT INTO {table} VALUES (".format(table=table)
+        for value in data:
+            query += "\'{}\',".format(value)
+        query = query[:-1] + ')'
+
+        return self.execute(query)
+
+    def execute(self, query):
+        """
+        Unsafe query executor. Don't use this unless the query has been preprocessed.
+
+        :param query: The query to be executed
+        :return: (True, "Success") if the query executed fine. (False, "Message) otherwise
+        """
         try:
             with self.connection:
-                query = "INSERT INTO {table} VALUES (".format(table=table)
-                for value in data:
-                    query += "\'{}\',".format(value)
-                query = query[:-1] + ')'
-
                 self.connection.execute(query)
         except sqlite3.Error as e:
             return (False, e.args[0])
-
         return (True, "Success")
