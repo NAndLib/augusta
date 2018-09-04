@@ -78,7 +78,7 @@ as a man.
             - Insert done.
             - Create/Drop done.
         - [ ] Transactions.
-    - [ ] Refactor `add` and `addSID` to use the new database instead of CSVs.
+    - [x] Refactor `add` and `addSID` to use the new database instead of CSVs.
 
 ## Teaching Assistance:
 - [ ] BOY. THE MANUAL. Another page.
